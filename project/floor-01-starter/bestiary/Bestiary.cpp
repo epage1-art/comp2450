@@ -39,7 +39,7 @@ std::vector<Monster> loadBestiary(const std::string& path) {
     while (std::getline(in, line)) {
         if (line.empty() || line[0] == '#') continue;
 
-        Monster m;
+        Monster m{};
         std::istringstream ss(line);  // treat the line as its own stream
         std::string field;
 
