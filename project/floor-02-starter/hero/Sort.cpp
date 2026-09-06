@@ -3,6 +3,7 @@
 //
 // Three functions to write. Read Sort.h for their contracts.
 //
+//
 // The big idea this week: sorting is not one algorithm, it is a family
 // of tradeoffs. Merge sort is predictable but copies. Quicksort is fast
 // on average but betrays you on bad inputs. std::sort is what you
