@@ -42,6 +42,8 @@ void splitFirst(const std::string& line, std::string& cmd, std::string& rest) {
     if (sp == std::string::npos) { cmd = line; rest.clear(); }
     else { cmd = line.substr(0, sp); rest = line.substr(sp + 1); }
 }
+Bag<int> numbers;
+findByName(numbers, "seven");
 
 void printHelp() {
     std::cout << "(commands:\n"
@@ -122,21 +124,21 @@ int main() {
             for (const auto& m : bestiary) printMonster(m);
         }
         else if (cmd == "search") {
-            // Floor 3 (Mon): this is where your function template earns
-            // its keep. Replace the monster-only findMonster call below
-            // with calls to findByName<T> against BOTH the bestiary and
-            // hero.inventory — same source template, two instantiations.
-            // Print the first match; fall through to the "no such" line
-            // if nothing matches in either.
             if (rest.empty()) {
                 std::cout << "Speak a name:  search <monster-or-item>\n";
                 continue;
             }
-            // TODO Floor 3 (Mon): wire this to findByName<T>. For now
-            // it still calls Floor 1's monster-only findMonster.
-            const Monster* m = findMonster(bestiary, rest);
-            if (m) { printMonster(*m); continue; }
-            std::cout << "No such creature stalks this Keep.\n";
+            if (const Monster* m = findByName<Monster>(bestiary, rest)) {
+                printMonster(*m);
+            }
+            if (const Item* it = findByName<Item>(hero.inventory, rest)) {
+                std::cout << "  " << it->name
+                    << "  (wt " << it->weight
+                    << ", val " << it->value << ")\n";
+            }
+			else {
+				std::cout << "No such creature or item under that name.\n";
+			}
         }
         else if (cmd == "inventory") {
             printInventory(hero);
