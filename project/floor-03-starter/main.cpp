@@ -42,8 +42,6 @@ void splitFirst(const std::string& line, std::string& cmd, std::string& rest) {
     if (sp == std::string::npos) { cmd = line; rest.clear(); }
     else { cmd = line.substr(0, sp); rest = line.substr(sp + 1); }
 }
-Bag<int> numbers;
-findByName(numbers, "seven");
 
 void printHelp() {
     std::cout << "(commands:\n"

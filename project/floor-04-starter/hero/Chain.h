@@ -23,9 +23,9 @@
 // Why not iterators (begin()/end()): those are Floor 5's lesson. This
 // week, callers walk the chain by hand:
 //
-//     for (const Node* p = chain.head(); p != nullptr; p = p->next) {
-//         use(p->data);
-//     }
+//        for (const Node* p = chain.head(); p != nullptr; p = p->next) {
+//        use(p->data);
+//        }
 //
 // Awkward on purpose. Floor 5 will fix it.
 
@@ -83,20 +83,20 @@ public:
     // Walk the chain from head to tail. For each node: SAVE the next
     // pointer FIRST, then delete the current node, then advance.
     //
-    //     Node* p = head_;
-    //     while (p != nullptr) {
-    //         Node* n = p->next;   // <- save BEFORE delete; you cannot
-    //                              //    read p->next after delete p.
-    //         delete p;            // runs ~Node(), bumps the counter.
-    //         p = n;
-    //     }
-    //     head_ = nullptr;
-    //     size_ = 0;
+    /*Node* p = head_;
+        while (p != nullptr) {
+            Node* n = p->next;   // <- save BEFORE delete; you cannot
+            delete p; runs 
+            p = n;
+        }
+        head_ = nullptr;
+        size_ = 0; //*/
     //
     // (clear() does the same job — implement it below and call it from
     // the destructor body if you prefer one source of truth.)
     ~Chain() {
-        // TODO Floor 4 (Wednesday)
+        clear();
+
     }
 
     // -----------------------------------------------------------------
@@ -139,7 +139,7 @@ public:
     //
     // TODO Floor 4 (Monday) — return head_.
     const Node* head() const { return head_; /* TODO Monday */ }
-    Node*       head()       { return head_jn ; /* TODO Monday */ }
+    Node*       head()       { return head_; /* TODO Monday */ }
 
     // -----------------------------------------------------------------
     // Mutation
@@ -150,9 +150,9 @@ public:
     //
     // TODO Floor 4 (Monday). The body is three lines:
     
-    void push_front(const T& /*value*/) {
+    void push_front(const T& value) {
         // TODO Monday
-		Node* n = new Node(const T & value);
+		Node* n = new Node(value, head_);
         head_ = n;
 		++size_;
     }
@@ -162,6 +162,14 @@ public:
     // TODO Floor 4 (Wednesday). Same loop as the destructor.
     void clear() {
         // TODO Wednesday
+		Node* p = head_;
+		while (p != nullptr) {
+			Node* n = p->next;
+			delete p;
+			p = n;
+		}
+		head_ = nullptr;
+		size_ = 0;
     }
 
 private:
