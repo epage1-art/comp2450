@@ -25,10 +25,39 @@ Paste the **full reply**, code and prose. Use a fenced code block for the code. 
 
 ```cpp
 // (paste the LLM's code here)
+#include <vector>
+#include <optional>
+
+template <typename T>
+std::optional<T> maxElement(const std::vector<T>& vec) {
+    if (vec.empty()) {
+        return std::nullopt;   // No value available
+    }
+
+    T largest = vec[0];
+    for (const T& val : vec) {
+        if (val > largest) {
+            largest = val;
+        }
+    }
+    return largest;
+}
 ```
 
 (paste any prose explanation here, verbatim)
 
+Design Choices Explained
+Use of std::optional<T>  
+Returning an optional makes the “empty vector” case explicit. Instead of throwing or returning a sentinel value, the caller must check whether a value exists.
+
+Pass vector by const reference  
+Avoids copying and allows the function to work with any vector of comparable types.
+
+Manual loop instead of std::max_element  
+You could use std::max_element, but writing the loop keeps the logic transparent and avoids dereferencing an iterator when the vector is empty.
+
+(If you prefer the STL version, it’s a one‑liner:
+auto it = std::max_element(vec.begin(), vec.end()); — but you still need to check vec.empty().)
 ---
 
 ## My critique  *( ≥ 150 words )*
