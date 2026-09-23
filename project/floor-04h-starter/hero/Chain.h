@@ -199,20 +199,28 @@ public:
     void push_front(const T& value) {
         Node* n = new Node(value, nullptr, head_);
         // TODO Monday — wire prev/tail consistency (see comment above).
+        if (head_ != nullptr) head_->prev = n;
+        else tail_ = n;
         head_ = n;
-        ++size_;
+        size_++;
+        
     }
 
     // TODO Floor 4½ (Monday) — append `value` at the tail. O(1) thanks
     // to `tail_`. The body is the mirror of push_front's Floor 4½ form:
-    //
-    //     Node* n = new Node(value, /*prev=*/tail_, /*next=*/nullptr);
-    //     if (tail_ != nullptr) tail_->next = n;
-    //     else                  head_ = n;
-    //     tail_ = n;
-    //     ++size_;
-    void push_back(const T& /*value*/) {
+    //  Node* n = new Node(value, tail_, nullptr);
+    //      if (tail_ != nullptr) tail_->next = n;
+    //      else head_ = n;
+    //      tail_ = n;
+    //      ++size_;
+         
+    void push_back(const T& value) {
         // TODO Monday
+        Node* n = new Node(value, tail_, nullptr);
+            if (tail_ != nullptr) tail_->next = n;
+            else head_ = n;
+            tail_ = n;
+            size_++;
     }
 
     // TODO Floor 4½ (Friday) — remove the front node. O(1).

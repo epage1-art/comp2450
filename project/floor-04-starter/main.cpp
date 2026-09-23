@@ -91,7 +91,8 @@ int main() {
         std::cerr << "Your satchel is empty. Cannot proceed.\n";
         return 1;
     }
-
+    //Chain<int> a; a.push_front(1); 
+   // Chain<int> b = a;
     // First entry in the chain. Once push_front works, this is what
     // shows up at the bottom of `log`.
     hero.eventLog.push_front("began session as \"" + hero.heroName + "\"");

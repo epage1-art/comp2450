@@ -23,9 +23,9 @@
 // Why not iterators (begin()/end()): those are Floor 5's lesson. This
 // week, callers walk the chain by hand:
 //
-//        for (const Node* p = chain.head(); p != nullptr; p = p->next) {
-//        use(p->data);
-//        }
+        //for (const Node* p = chain.head(); p != nullptr; p = p->next) {
+       // use(p->data);
+        //}
 //
 // Awkward on purpose. Floor 5 will fix it.
 
