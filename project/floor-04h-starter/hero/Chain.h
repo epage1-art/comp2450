@@ -216,7 +216,7 @@ public:
          
     void push_back(const T& value) {
         // TODO Monday
-        Node* n = new Node(value, tail_, nullptr);
+        Node* n = new Node(value, nullptr, nullptr);
             if (tail_ != nullptr) tail_->next = n;
             else head_ = n;
             tail_ = n;
