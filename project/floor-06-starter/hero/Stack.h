@@ -74,6 +74,7 @@ public:
     //     chain_.pop_front();
     void pop() {
         // TODO Monday
+        chain_.pop_front();
     }
 
     // Read the top of the stack. O(1). PROVIDED — you do not write this.
@@ -99,7 +100,7 @@ public:
     // TODO Floor 6 (Monday). Body is one line.
     //     return chain_.size();
     std::size_t size() const {
-        return 0;   // TODO Monday
+        return chain_.size();   // TODO Monday
     }
 
     // True iff size() == 0.
@@ -108,7 +109,7 @@ public:
     // to touch chain_; you can delegate to your own size().
     //     return size() == 0;
     bool empty() const {
-        return true;   // TODO Monday
+        return size() == 0;   // TODO Monday
     }
 
 private:
