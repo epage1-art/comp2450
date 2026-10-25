@@ -15,6 +15,7 @@ Creatures of the Hold/Undead/Corporeal/Necrothrall
 Creatures of the Hold/Undead/Corporeal/Lich
 Creatures of the Hold/Undead/Incorporeal/Wraith
 Creatures of the Hold/Undead/Incorporeal/Wisp
+Creatures of the Hold/Beasts/Mammals/Goblin
 Creatures of the Hold/Beasts/Mammals/Shadow Hound
 Creatures of the Hold/Beasts/Mammals/Ironclaw Bear
 Creatures of the Hold/Beasts/Mammals/Cinder Bat

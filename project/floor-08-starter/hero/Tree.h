@@ -288,7 +288,7 @@ private:
 		for (std::size_t i = 0; i < n->children.size(); ++i) {
 			if (const Node* hit = findFrom(n->children[i], value)) return hit;
 		}
-		return nullptr;
+        return nullptr;
     }
 };
 
